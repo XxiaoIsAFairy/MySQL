@@ -1,0 +1,24 @@
+CREATE TABLE students (sid INT(5),name varchar(31),gender VARCHAR(5),subject VARCHAR(31),points INT(5),great_at datetime);
+
+insert into students(sid,name,gender,subject,points,great_at) values 
+(001,"長岡　一馬","男","国語",30,now()),
+(001,"長岡　一馬","男","英語",30,now()),
+(002,"中本　知佳","女","国語",70,now()),
+(002,"中本　知佳","女","数学",80,now()),
+(003,"松本　義文","男","理科",92,now()),
+(003,"松本　義文","男","社会",90,now()),
+(004,"佐竹　友香","女","理科",35,now()),
+(004,"佐竹　友香","女","英語",22,now());
+select name from students where gender="男";
+
+select name from students where points<=30;
+
+select name from students where subject="国語";
+select name from students where subject="理科"
+or subject="数学";
+
+select name from students where subject<>"英語" group by sid having count(sid)=2;
+
+select name,points from students order by points;
+select count(name) from students where subject="英語" and subject="国語"and subject="数学" and subject="理科" and subject="社会";
+select subject,count(name) from students group by subject;
